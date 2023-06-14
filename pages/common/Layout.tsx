@@ -6,17 +6,14 @@ import HeadMeta from "./Head.meta";
 import Link from "next/link";
 import { navLinks } from "../static/links";
 import { useState } from "react";
-import { footerList1, footerList2 } from "../static/footer";
 import Footer from "./Footer";
-import OneToOneChat from "./OneToOneChat";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const url = useRouter().query;
   const [activeLink, setActiveLink] = useState<string>("/");
-  const [activeChat, setActiveChat] = useState<boolean>(false);
-  console.log(activeLink, "activeLink!");
+
   return (
-    <div className="relative">
+    <div>
       <HeadMeta />
       <div css={headStyles}>
         <Link legacyBehavior href="/">
@@ -70,18 +67,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </div>
       <main>{children}</main>
       <Footer />
-      <div className="absolute bottom-2 right-2">
-        {activeChat && <OneToOneChat />}
-
-        <div
-          className="absolute bottom-0 right-0 w-16 h-16 rounded-full bg-white"
-          onClick={() => {
-            setActiveChat(!activeChat);
-          }}
-        >
-          채팅하기
-        </div>
-      </div>
     </div>
   );
 }

@@ -1,5 +1,3 @@
-import React from "react";
-
 interface ButtonType {
   children: string;
   buttonClass: string;
@@ -14,11 +12,7 @@ export default function Button({
   handleOnClick,
 }: ButtonType) {
   return (
-    <button
-      className={`${buttonClass} rounded-md`}
-      disabled={disabled}
-      onClick={handleOnClick}
-    >
+    <button className={buttonClass} disabled={disabled} onClick={handleOnClick}>
       {children}
     </button>
   );

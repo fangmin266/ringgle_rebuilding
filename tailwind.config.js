@@ -16,14 +16,22 @@ module.exports = {
         primary_100: "#4130A4",
         primary_90: "rgb(32, 24, 82)",
         secondary_100: "rgb(124, 127, 148)",
-        // primary_60:""
       },
 
       backgroundColor: {
+        primary_130: "rgb(238, 235, 250)",
+        primary_120: "rgb(203, 197, 240)",
+        primary_110: "rgb(168, 158, 230)",
         primary_100: "#4130A4",
+        primary_90: "rgb(32, 24, 82)",
+
         secondary_100: "rgb(124, 127, 148)",
         secondary_80: "rgb(40, 41, 50)",
         unactive_100: "#efefef",
+      },
+      backgroundImage: {
+        home_btn:
+          "linear-gradient(270deg, rgb(151, 114, 228) 0%, rgb(113, 53, 211) 39.06%, rgb(55, 40, 145) 100%)",
       },
       fontFamily: {
         crimson: ["'Crimson Text', serif"],
