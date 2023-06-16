@@ -1,12 +1,11 @@
-import "../../styles/Common.module.css";
 import { useRouter } from "next/router";
-import Button from "../components/Button";
 import { css } from "@emotion/react";
 import HeadMeta from "./Head.meta";
 import Link from "next/link";
-import { navLinks } from "../static/links";
 import { useState } from "react";
 import Footer from "./Footer";
+import { navLinks } from "@/static/links";
+import Button from "@/components/Button";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const url = useRouter().query;
@@ -47,7 +46,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="flex gap-x-3">
           <Button
             disabled={false}
-            buttonClass="border border-primary_100 text-primary_100"
+            buttonClass="border border-primary_100 text-primary_100 rounded"
             handleOnClick={() => {
               alert("button");
             }}
@@ -56,7 +55,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </Button>
           <Button
             disabled={false}
-            buttonClass=" bg-primary_100 text-white"
+            buttonClass=" bg-primary_100 text-white rounded"
             handleOnClick={() => {
               alert("button");
             }}

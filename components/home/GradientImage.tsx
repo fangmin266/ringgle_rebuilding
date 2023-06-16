@@ -1,5 +1,5 @@
+import { containerStyles } from "@/common/Layout";
 import { css } from "@emotion/react";
-import { containerStyles } from "../../common/Layout";
 
 export default function GradientImage({
   bgimage,

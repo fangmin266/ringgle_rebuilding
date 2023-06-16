@@ -21,7 +21,12 @@
     ],
     "jsxImportSource": "@emotion/react",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/pages/*": ["./pages/*"],
+      "@/common/*": ["./common/*"],
+      "@/components/*": ["./components/*"],
+      "@/static/*": ["./static/*"],
+      "@/public/*": ["./public/*"],
+      "@/styles/*": ["./styles/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

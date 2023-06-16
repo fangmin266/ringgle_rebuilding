@@ -1,5 +1,5 @@
+import { containerStyles } from "@/common/Layout";
 import React from "react";
-import { containerStyles } from "../../common/Layout";
 
 export default function HalfLayout({
   scrollRef,

@@ -1,25 +1,50 @@
-import React, { RefObject, useRef, useState } from "react";
+import React, { RefObject, useEffect, useRef, useState } from "react";
 import Person2Icon from "@mui/icons-material/Person2";
 
-import Button from "./components/Button";
-import OneToOneChat from "./common/OneToOneChat";
-import HalfLayout from "./components/home/HalfLayout";
-import { useTransform, useViewportScroll, motion } from "framer-motion";
+import { useTransform, motion, useScroll } from "framer-motion";
 import { css, keyframes } from "@emotion/react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { styled } from "@mui/material/styles";
-import GradientImage from "./components/home/GradientImage";
-import Layout, { containerStyles } from "./common/Layout";
-
-import { fluidData1 } from "./static/fluidData";
-import { TextFluid } from "./components/home/TextFluid";
+import Layout, { containerStyles } from "../common/Layout";
+import { TextFluid } from "@/components/home/TextFluid";
+import GradientImage from "@/components/home/GradientImage";
+import { fluidData1 } from "@/static/fluidData";
+import HalfLayout from "@/components/home/HalfLayout";
+import Button from "@/components/Button";
+import OneToOneChat from "@/common/OneToOneChat";
 
 export default function Home() {
   const [activeChat, setActiveChat] = useState<boolean>(false);
-  const { scrollY } = useViewportScroll();
+  const { scrollY } = useScroll();
+
   // 스크롤 값에 따라 애니메이션에 사용할 변수 생성
   const visibility = useTransform(scrollY, [1000, 1100], [0, 1]);
+  const [scrollRange, setScrollRange] = useState([0, 0]);
+  const visibility2 = useTransform(scrollY, scrollRange, [0, 1]);
   const scrollRef: RefObject<Element> = useRef(null);
+  const targetId = "myTargetId";
+
+  useEffect(() => {
+    //document dom 접근은 useEffect handler 내에서만 가능
+    const handleScroll = () => {
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        const { offsetTop } = targetElement;
+        const targetScrollPosition = offsetTop;
+        const currentScrollPositon = scrollY.get();
+        if (currentScrollPositon > targetScrollPosition - window.innerHeight) {
+          setScrollRange([
+            targetScrollPosition - window.innerHeight,
+            targetScrollPosition,
+          ]);
+        }
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrollY, visibility2, targetId]);
 
   const moveDownId = () => {
     if (scrollRef.current) {
@@ -58,8 +83,8 @@ export default function Home() {
             css={containerStyles}
             className="flex justify-center items-center"
           >
-            <div className="w-[680px] bg-white rounded-xl px-4 py-12 overflow-hidden">
-              <div className="flex flex-col items-center text-center">
+            <div className="w-[680px] bg-white rounded-xl py-12 ">
+              <div className="flex flex-col items-center text-center mx-4 overflow-hidden">
                 <div className="flex gap-x-3 items-center">
                   <Person2Icon
                     fontSize="large"
@@ -77,9 +102,9 @@ export default function Home() {
                   <p>원어민은 많지만 고급 표현과 영어로</p>
                   <p>생각하는 법을 배울수 있는 튜터는 따로 있죠.</p>
                 </div>
-              </div>
-              <div className="py-6 mt-12">
-                <TextFluid items={fluidData1} />
+                <div className="mt-12">
+                  <TextFluid items={fluidData1} items2={fluidData1} />
+                </div>
               </div>
             </div>
           </div>
@@ -128,6 +153,21 @@ export default function Home() {
             "단순히 비즈니스 용어만 배우는 게 아니라, 영어로 내 생각을 잘 전달하는 법을 배울 수 있는 곳은 링글밖에 없습니다."
           }
         />
+        <section
+          id={targetId}
+          className="py-20 bg-primary_90 font-bold leading-normal text-white text-6xl text-center"
+        >
+          <motion.div
+            style={{
+              opacity: visibility2,
+              transition: "opacity 0.2s ease",
+            }}
+          >
+            <div>링글의 수업 시스템이</div>
+            <div>튜터와의 시간을</div>
+            <div>더욱 가치있게 해줍니다.</div>
+          </motion.div>
+        </section>
       </Layout>
       <motion.div
         style={{
@@ -149,6 +189,7 @@ export default function Home() {
           4,000원으로 첫 수업 시작하기
         </Button>
       </motion.div>
+
       <div className="absolute bottom-2 right-2">
         {activeChat && <OneToOneChat />}
 
