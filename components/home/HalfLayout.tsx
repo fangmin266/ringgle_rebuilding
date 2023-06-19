@@ -1,4 +1,4 @@
-import { containerStyles } from "@/common/Layout";
+import { responsiveStyles } from "@/common/Layout";
 import React from "react";
 
 export default function HalfLayout({
@@ -24,7 +24,7 @@ export default function HalfLayout({
 }) {
   return (
     <section className="w-full bg-primary_90 py-40" ref={scrollRef}>
-      <div className="flex gap-x-4" css={containerStyles}>
+      <div className="flex gap-x-4" css={responsiveStyles}>
         <div className="flex-1 text-4xl font-bold text-white leading-normal">
           <p>{title}</p>
           <p>{title2}</p>

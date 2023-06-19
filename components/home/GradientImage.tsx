@@ -1,4 +1,4 @@
-import { containerStyles } from "@/common/Layout";
+import { responsiveStyles } from "@/common/Layout";
 import { css } from "@emotion/react";
 
 export default function GradientImage({
@@ -13,7 +13,7 @@ export default function GradientImage({
   `;
   return (
     <section className="bg-primary_90">
-      <div css={containerStyles}>
+      <div css={responsiveStyles}>
         <div className="relative w-full h-[600px]">
           <div
             className={`absolute inset-0 flex items-center flex-col bg-no-repeat bg-cover `}

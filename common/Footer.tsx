@@ -1,11 +1,11 @@
 import React from "react";
-import { containerStyles } from "./Layout";
-import { footerList1, footerList2 } from "@/static/footer";
+import { responsiveStyles, sidePadding } from "./Layout";
+import { footerList1, footerList2 } from "@/static/common/footer";
 
 export default function Footer() {
   return (
     <footer className="w-full bg-secondary_80 py-12 text-white">
-      <div css={containerStyles}>
+      <div css={responsiveStyles}>
         <ul className="flex justify-between w-full">
           <li className="text-xs w-1/3">
             <div className="py-2 text-secondary_100">
@@ -25,14 +25,20 @@ export default function Footer() {
               </span>
             </div>
           </li>
-          <li className="border-x px-16 py-6 w-1/3 border-secondary_100">
+          <li
+            className=" border-x py-6 w-1/3 border-secondary_100"
+            css={sidePadding}
+          >
             <ul className="text-sm grid grid-cols-2 gap-y-4 gap-x-10">
               {footerList2?.map((el) => (
                 <p key={el.id}>{el.title}</p>
               ))}
             </ul>
           </li>
-          <li className="w-1/3 text-sm px-16 py-3 flex flex-col gap-y-2">
+          <li
+            className="w-1/3 text-sm py-3 flex flex-col gap-y-2"
+            css={sidePadding}
+          >
             <div className=" font-bold px-6 py-4 rounded-md bg-secondary_100 ">
               자주 묻는 질문
             </div>

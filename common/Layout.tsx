@@ -4,8 +4,8 @@ import HeadMeta from "./Head.meta";
 import Link from "next/link";
 import { useState } from "react";
 import Footer from "./Footer";
-import { navLinks } from "@/static/links";
 import Button from "@/components/Button";
+import { navLinks, studentLanding } from "@/static/common/links";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const url = useRouter().query;
@@ -15,7 +15,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div>
       <HeadMeta />
       <div css={headStyles}>
-        <Link legacyBehavior href="/">
+        <Link legacyBehavior href={studentLanding + "/home"}>
           <a className="text-primary_100 font-bold text-2xl">Ringle</a>
         </Link>
         <nav>
@@ -69,7 +69,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
-export const containerStyles = css({
+
+export const sidePadding = css({
+  padding: "0 40px",
+});
+export const responsiveStyles = css({
   margin: "0 auto",
   maxWidth: "1080px",
 
@@ -93,6 +97,7 @@ const headStyles = css({
   padding: "12px 0",
   margin: "0 auto",
   maxWidth: "1080px",
+  backgroundColor: "white",
 
   "@media (min-width: 1200px)": {
     //min 1200
