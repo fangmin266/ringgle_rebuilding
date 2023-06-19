@@ -4,14 +4,16 @@ import { PURGE } from "redux-persist";
 
 interface CommonState {
   section: string;
-  subSection: string;
+  tutorCategory: string;
+  modal: boolean;
   i: number;
   status: null | string;
 }
 
 const initialState: CommonState = {
   section: "홈",
-  subSection: "커뮤니티",
+  tutorCategory: "경영/경제",
+  modal: false,
   i: 0,
   status: null,
 };
@@ -32,11 +34,17 @@ export const emailSignup = createAsyncThunk(
 );
 
 const commonSlice = createSlice({
-  name: "섹션",
+  name: "common",
   initialState,
   reducers: {
     onSetSection: (state, action: PayloadAction<string>) => {
       state.section = action.payload;
+    },
+    onClickTutorCategory: (state, action: PayloadAction<string>) => {
+      state.tutorCategory = action.payload;
+    },
+    openModal: (state, action: PayloadAction<boolean>) => {
+      state.modal = !action.payload;
     },
   },
 
@@ -48,6 +56,7 @@ const commonSlice = createSlice({
   },
 });
 
-export const { onSetSection } = commonSlice.actions;
+export const { onSetSection, onClickTutorCategory, openModal } =
+  commonSlice.actions;
 
 export default commonSlice.reducer;

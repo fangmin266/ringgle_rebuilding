@@ -10,6 +10,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      zIndex: {
+        5: "5",
+        15: "15",
+        25: "25",
+        35: "35",
+      },
+      opacity: {
+        25: "0.25",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -30,6 +39,9 @@ module.exports = {
 
         secondary_100: "rgb(124, 127, 148)",
         secondary_80: "rgb(40, 41, 50)",
+
+        gray_100: "rgb(239 241 249)",
+        gray_100_opacity: "rgb(239 241 249 / 0.7)",
         unactive_100: "#efefef",
       },
       backgroundImage: {

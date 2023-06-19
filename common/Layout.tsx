@@ -1,18 +1,17 @@
 import { useRouter } from "next/router";
-import { css } from "@emotion/react";
 import HeadMeta from "./Head.meta";
 import Link from "next/link";
 import { useState } from "react";
 import Footer from "./Footer";
 import Button from "@/components/Button";
 import { navLinks, studentLanding } from "@/static/common/links";
+import { headStyles } from "@/styles/Emotion";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const url = useRouter().query;
   const [activeLink, setActiveLink] = useState<string>("/");
 
   return (
-    <div>
+    <div id="portal-container">
       <HeadMeta />
       <div css={headStyles}>
         <Link legacyBehavior href={studentLanding + "/home"}>
@@ -70,44 +69,45 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export const sidePadding = css({
-  padding: "0 40px",
-});
-export const responsiveStyles = css({
-  margin: "0 auto",
-  maxWidth: "1080px",
+// export const sidePadding = css({
+//   padding: "0 40px",
+// });
 
-  "@media (min-width: 1200px)": {
-    //min 1200
-  },
-  "@media (max-width: 1199px) and (min-width: 800px)": {
-    padding: "0 48px",
-    color: "red",
-  },
-  "@media (max-width: 799px)": {
-    padding: "0 20px",
-    backgroundColor: "yellow",
-  },
-});
+// export const responsiveStyles = css({
+//   margin: "0 auto",
+//   maxWidth: "1080px",
 
-const headStyles = css({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  padding: "12px 0",
-  margin: "0 auto",
-  maxWidth: "1080px",
-  backgroundColor: "white",
+//   "@media (min-width: 1200px)": {
+//     //min 1200
+//   },
+//   "@media (max-width: 1199px) and (min-width: 800px)": {
+//     padding: "0 48px",
+//     color: "red",
+//   },
+//   "@media (max-width: 799px)": {
+//     padding: "0 20px",
+//     backgroundColor: "yellow",
+//   },
+// });
 
-  "@media (min-width: 1200px)": {
-    //min 1200
-  },
-  "@media (max-width: 1199px) and (min-width: 800px)": {
-    padding: "12px 48px",
-    color: "red",
-  },
-  "@media (max-width: 799px)": {
-    padding: "12px 20px",
-    backgroundColor: "yellow",
-  },
-});
+// const headStyles = css({
+//   display: "flex",
+//   alignItems: "center",
+//   justifyContent: "space-between",
+//   padding: "12px 0",
+//   margin: "0 auto",
+//   maxWidth: "1080px",
+//   backgroundColor: "white",
+
+//   "@media (min-width: 1200px)": {
+//     //min 1200
+//   },
+//   "@media (max-width: 1199px) and (min-width: 800px)": {
+//     padding: "12px 48px",
+//     color: "red",
+//   },
+//   "@media (max-width: 799px)": {
+//     padding: "12px 20px",
+//     backgroundColor: "yellow",
+//   },
+// });

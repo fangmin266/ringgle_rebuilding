@@ -16,6 +16,23 @@ const initialState: CommonState = {
   status: null,
 };
 
+export interface DataType {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  title: string;
+  content: string;
+  startFunding: string;
+  endFunding: string;
+  startDelivery: string;
+  deliveryFee: number;
+  productLimit: number;
+  price: number;
+  productNum: number;
+  productImage: string[];
+  thumbnail: string;
+}
+
 export const productPost = createAsyncThunk(
   //product 생성
   "productPost",
@@ -31,8 +48,17 @@ export const productPost = createAsyncThunk(
       productLimit: 210,
       price: 21000,
     };
-    const res = await api.post("/product", params);
+    const res = await api.post("product", params);
     return res.data;
+  }
+);
+
+export const productGet = createAsyncThunk(
+  //product get
+  "productGet",
+  async () => {
+    const res = await api.get("product/all");
+    return res.data.data;
   }
 );
 
@@ -47,6 +73,9 @@ const productSlice = createSlice({
 
   extraReducers: (builder) => {
     builder.addCase(productPost.fulfilled, (state, action) => {
+      state.status = "success";
+    });
+    builder.addCase(productGet.fulfilled, (state, action) => {
       state.status = "success";
     });
     builder.addCase(PURGE, () => initialState);

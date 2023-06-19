@@ -3,49 +3,16 @@ import Person2Icon from "@mui/icons-material/Person2";
 import { useTransform, motion, useScroll } from "framer-motion";
 import { css, keyframes } from "@emotion/react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Layout, { responsiveStyles } from "@/common/Layout";
+import Layout from "@/common/Layout";
 import { TextFluid } from "@/components/home/TextFluid";
 import { fluidData1 } from "@/static/fluidData";
 import HalfLayout from "@/components/home/HalfLayout";
 import GradientImage from "@/components/home/GradientImage";
 import Button from "../../../components/Button";
 import OneToOneChat from "@/common/OneToOneChat";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../../features/store";
-import { productPost } from "../../../features/common/productReducer";
-import axios from "axios";
-import api, { common } from "@/common/baseurl/api";
+import { responsiveStyles } from "@/styles/Emotion";
 
-export async function getServerSideProps() {
-  // 서버에서 데이터 가져오기
-  const res = await axios.get(common.baseURL + "product/all");
-  const data: DataType[] = await res.data.data;
-
-  return {
-    props: {
-      data, // 데이터를 props에 포함시킴
-    },
-  };
-}
-
-interface DataType {
-  id: string;
-  createdAt: string;
-  updatedAt: string;
-  title: string;
-  content: string;
-  startFunding: string;
-  endFunding: string;
-  startDelivery: string;
-  deliveryFee: number;
-  productLimit: number;
-  price: number;
-  productNum: number;
-  productImage: string[];
-  thumbnail: string;
-}
-
-export default function Home({ data }: { data: DataType[] }) {
+export default function Home() {
   const [activeChat, setActiveChat] = useState<boolean>(false);
   const { scrollY } = useScroll();
 
@@ -85,30 +52,9 @@ export default function Home({ data }: { data: DataType[] }) {
     }
   };
 
-  const dispatch = useDispatch<AppDispatch>();
   return (
     <>
       <Layout>
-        <div className="flex flex-col">
-          <h1>product post</h1>
-
-          <button
-            className="w-[200px]"
-            onClick={() => {
-              const res = dispatch(productPost()).unwrap();
-              console.log(res, "res");
-            }}
-          >
-            product 생성
-          </button>
-        </div>
-        <div>
-          {data?.map((el) => (
-            <div key={el.id}>
-              <div>{el.content}</div>
-            </div>
-          ))}
-        </div>
         <section className="w-full bg-white py-28">
           <div css={responsiveStyles} className="flex justify-center gap-x-6">
             <div>
