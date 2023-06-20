@@ -32,24 +32,24 @@ export interface DataType {
   productImage: string[];
   thumbnail: string;
 }
+interface inputType {
+  title: string;
+  content: string;
+  startFunding: string;
+  endFunding: string;
+  startDelivery: string;
+  deliveryFee: number;
+  productLimit: number;
+  price: number;
+}
 
 export const productPost = createAsyncThunk(
   //product 생성
   "productPost",
-  async () => {
-    const params = {
-      title: "test1",
-      content:
-        "포장마법사 텐도° 입니다. 텐도는 세계 3대 발명대회를 휩쓴 테이프 커터기로 편리한 기능과 뛰어난 디자인을 제공합니다. 4가지의 다양한 신규 컬러들을 ",
-      startFunding: "01/01/2023",
-      endFunding: "01/01/2023",
-      startDelivery: "01/01/2023",
-      deliveryFee: 2000,
-      productLimit: 210,
-      price: 21000,
-    };
+  async (params: inputType) => {
+    console.log(params, "params");
     const res = await api.post("product", params);
-    return res.data;
+    return res;
   }
 );
 

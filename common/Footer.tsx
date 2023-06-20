@@ -1,6 +1,6 @@
 import React from "react";
-import { responsiveStyles, sidePadding } from "./Layout";
 import { footerList1, footerList2 } from "@/static/common/footer";
+import { responsiveStyles, sidePadding } from "@/styles/Emotion";
 
 export default function Footer() {
   return (

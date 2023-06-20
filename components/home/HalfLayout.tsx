@@ -1,4 +1,4 @@
-import { responsiveStyles } from "@/common/Layout";
+import { responsiveStyles } from "@/styles/Emotion";
 import React from "react";
 
 export default function HalfLayout({

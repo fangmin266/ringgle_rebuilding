@@ -1,3 +1,4 @@
+import HeadMeta from "@/common/Head.meta";
 import Layout from "@/common/Layout";
 import { common } from "@/common/baseurl/api";
 import Banner from "@/components/Banner";
@@ -29,6 +30,7 @@ export default function EnglishLearningMaterials({
 }) {
   return (
     <>
+      <HeadMeta title="ringle_material" content="교재입니다" name="교재" />
       <Layout>
         <Banner
           text1={"일상 대화부터 시사,"}

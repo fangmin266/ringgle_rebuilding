@@ -11,6 +11,7 @@ import GradientImage from "@/components/home/GradientImage";
 import Button from "../../../components/Button";
 import OneToOneChat from "@/common/OneToOneChat";
 import { responsiveStyles } from "@/styles/Emotion";
+import HeadMeta from "@/common/Head.meta";
 
 export default function Home() {
   const [activeChat, setActiveChat] = useState<boolean>(false);
@@ -54,6 +55,7 @@ export default function Home() {
 
   return (
     <>
+      <HeadMeta title="ringle_home" content="홈입니다" name="홈" />
       <Layout>
         <section className="w-full bg-white py-28">
           <div css={responsiveStyles} className="flex justify-center gap-x-6">

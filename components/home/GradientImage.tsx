@@ -1,4 +1,4 @@
-import { responsiveStyles } from "@/common/Layout";
+import { responsiveStyles } from "@/styles/Emotion";
 import { css } from "@emotion/react";
 
 export default function GradientImage({

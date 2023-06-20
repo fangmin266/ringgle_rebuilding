@@ -9,6 +9,7 @@ import Banner from "@/components/Banner";
 import TabAndSection from "@/components/TabAndSection";
 import { PotalComponent } from "@/components/Modal";
 import { useEffect } from "react";
+import HeadMeta from "@/common/Head.meta";
 
 export async function getServerSideProps() {
   const res = await axios.get(common.baseURL + "product/all");
@@ -40,6 +41,7 @@ export default function EnglishTutors({ data }: { data: DataType[] }) {
   }, [modal]);
   return (
     <>
+      <HeadMeta title="ringle" content="메인입니다" name="메인" />
       <Layout>
         <Banner
           text1={"다양한 전공과 관심사를 가진"}

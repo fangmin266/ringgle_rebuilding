@@ -4,13 +4,14 @@ import Person2Icon from "@mui/icons-material/Person2";
 import { useTransform, motion, useScroll } from "framer-motion";
 import { css, keyframes } from "@emotion/react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Layout, { responsiveStyles } from "../common/Layout";
 import { TextFluid } from "@/components/home/TextFluid";
 import GradientImage from "@/components/home/GradientImage";
 import { fluidData1 } from "@/static/fluidData";
 import HalfLayout from "@/components/home/HalfLayout";
 import Button from "@/components/Button";
 import OneToOneChat from "@/common/OneToOneChat";
+import Layout from "@/common/Layout";
+import { responsiveStyles } from "@/styles/Emotion";
 
 export default function Home() {
   const [activeChat, setActiveChat] = useState<boolean>(false);

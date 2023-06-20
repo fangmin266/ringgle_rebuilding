@@ -1,6 +1,11 @@
 import Head from "next/head";
 
-export default function HeadMeta() {
+export interface HeadMataType {
+  name: string;
+  content: string;
+  title: string;
+}
+export default function HeadMeta({ name, content, title }: HeadMataType) {
   const siteTitle = "sitTitle";
   return (
     <Head>
@@ -8,10 +13,7 @@ export default function HeadMeta() {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" />
 
-      <meta
-        name="description"
-        content="Learn how to build a personal website using Next.js"
-      />
+      <meta name={name} content={content} />
       <meta
         property="og:image"
         content={`https://og-image.vercel.app/${encodeURI(
@@ -21,7 +23,7 @@ export default function HeadMeta() {
       <meta name="og:title" content={siteTitle} />
       <meta name="twitter:card" content="summary_large_image" />
 
-      <title> Next App</title>
+      <title>{title}</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
   );
